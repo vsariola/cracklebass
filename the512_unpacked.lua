@@ -33,7 +33,7 @@ function TIC()
 --visuals:
 
  cls()
- mycirc=p<2 and circ or circb
+ mycirc=p<2 and circb or circ
   for z=5,.07,-.01 do
     circb(120+s(z+t/20)*9,68+s(z+t/17)*9,99/z,-z/6-N[1]/4)
     for i=0,9 do
