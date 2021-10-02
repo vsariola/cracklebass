@@ -33,12 +33,13 @@ function TIC()
 --visuals:
 
  cls()
+ mycirc=p<3 and circ or circb
   for z=5,.07,-.01 do
     for i=0,9 do
       l=t/10+z*3
       q=(s(i*3+l)+1.5+i/9)/z*19
-      w=i*8 + s(i*4+l) + s(s(t/20)+t/30)
-      circ(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)
+      w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
+      mycirc(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)
     end
   end
 
