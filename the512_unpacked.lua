@@ -37,7 +37,8 @@ function TIC()
   for z=5,.07,-.01 do
     circb(120+s(z+t/20)*9,68+s(z+t/17)*9,99/z,-z/6-N[1]/4)
     for i=0,9 do
-      l=t/10+z*3
+      l=t/10+z*(p%4)
+      l=p<3 and l//1 or l
       q=(s(i*3+l)+1.5+i/9)/z*19
       w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
       mycirc(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)
