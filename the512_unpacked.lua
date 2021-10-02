@@ -9,6 +9,9 @@ S={0,3,1,1,0,0,5,7, -- speeds, chords
    1,0,1,0,1,0,1,1} -- pat 4 (kick)
 
 t=0
+N={}
+s=math.sin
+
 function TIC()
 --music:
  p=t//1024
@@ -16,6 +19,7 @@ function TIC()
 	e=t*2/2^S[k+1]
 	w=S[p+k*8+9]
 	n=S[w*8+33+e//16%8] 
+	N[k]=n*w>0 and -e%16 or 0
 	sfx(0,
 	    10 -- adjust pitch for song
 	     +k*12 -- each instr 1 oct. apart
@@ -29,16 +33,20 @@ function TIC()
 --visuals:
 
  cls()
- for y=0,136,9 do 
- for x=0,240,9 do
- circ(x,y,math.sin(math.sin(x+t/23)+math.sin(y+t/27)+x/30+y/37+t/45)*5,12)
- end
- end
+  for z=5,.07,-.01 do
+    for i=0,9 do
+      l=t/10+z*3
+      q=(s(i*3+l)+1.5+i/9)/z*19
+      w=i*8 + s(i*4+l) + s(s(t/20)+t/30)
+      circ(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)
+    end
+  end
 
+ q=p-1&7<6or print("the 512b",99,63,12)
 
 	t=t+1
 
- q=t<8300or exit()	
+ q=t<8306or exit()	
 end
 
 -- <TILES>
