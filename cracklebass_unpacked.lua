@@ -12,6 +12,16 @@ S={-1,2,0,0, -- pattern speeds
 t=0
 N={}
 
+function prim(a,b,c,d,e)
+if a%3==0 then 
+  circ(b,c,d,e)
+elseif a==1 then
+  circb(b,c,d,e)
+else 
+  rectb(b-d,c-d,2*d,2*d,e)  
+end
+end
+
 function TIC()
 -- music:
   p=t//1024
@@ -38,13 +48,14 @@ function TIC()
 --visuals:
   cls()
   for z=5,.07,-.01 do
-    l=t/(5+p) + z*(p%4)^3
-    circb(
+    l=t/(5+p) + z*(p%4)^3    
+    prim(
+				  1-(p&2),
       120+s(l/4)*19/z,
       68+s(l/3)*19/z,
       99/z,
       (z/4-1+N[1]/4-s(N[4]*z)^98*3)*(p%2*2-1)*(15-N[3])/15
-    )    
+    )
     l=p<3 and l//1 or l    
     for i=0,9 do
       q=(s(i*p+l)+1.5+i/9)/z*19
@@ -53,22 +64,7 @@ function TIC()
       y=s(w+8)*q+68
       c=2^-z*N[3]*(.5-p%2)
       n=3/z
-      if p%4==2 then
-        rect(
-          x-n/2,
-          y-n/2,
-          n,
-          n,
-          c
-        )
-      else
-        (p%3==1 and circb or circ)(
-          x,
-          y,
-          n,
-          c
-        )      
-      end
+      prim(p%5,x,y,n,c)
     end
   end
 
