@@ -35,15 +35,26 @@ function TIC()
 --visuals:
 
  cls()
- mycirc=p<2 and circb or circ
   for z=5,.07,-.01 do
     l=t/10+z*(p%4)^3
     circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,z/4-1+N[1]/4)    
     l=p<3 and l//1 or l    
+				n=5/z    
     for i=0,9 do
       q=(s(i*3+l)+1.5+i/9)/z*19
       w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
-      mycirc(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)      
+      x=s(w)*q+120
+      y=s(w+8)*q+68
+      c=-2^-z*N[3]/2
+      n=3/z
+      if p%4==2 then
+        rect(x-n/2,
+             y-n/2,
+             n,n,-c)
+      else
+        (p%3==1 and circb or circ)
+          (x,y,n,c)      
+      end
     end
   end
 
