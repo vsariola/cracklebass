@@ -15,7 +15,6 @@ N={}
 function TIC()
 --music:
  p=t//1024
- c=p%6//4*S[5+t//128%4]
 	for k=0,3 do 	
 	e=t/2^S[k+1]
 	w=S[p+k*8+9]
@@ -24,7 +23,7 @@ function TIC()
 	sfx(0,
 	    10 -- adjust pitch for song
 	     +k*12 -- each instr 1 oct. apart
-						+c -- chord change
+						+p%6//4*S[5+t//128%4] -- chord change
 						+(n-1)*(9-n) -- minor chord
 						-k//3*e%16*8 -- kick pitch decay
 					 |0, -- force integer, tic stupid
