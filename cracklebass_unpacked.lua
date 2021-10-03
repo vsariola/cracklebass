@@ -17,8 +17,8 @@ function TIC()
  p=t//1024
 	for k=0,3 do 	
 	e=t/2^S[k+1]
-	w=S[p+k*8+9]
-	n=S[w*8+33+e//16%8] 
+	w=S[8*k+p+9]
+	n=S[8*w+33+e//16%8] 
 	N[k]=-e%16%(n*w*16+1)
 	sfx(0,
 	    10 -- adjust pitch for song
