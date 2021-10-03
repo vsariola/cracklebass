@@ -37,19 +37,19 @@ function TIC()
  cls()
   for z=5,.07,-.01 do
     l=t/(5+p)+z*(p%4)^3
-    circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,z/4-1+N[1]/4)    
+    circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,(z/4-1+N[1]/4)*(p%2*2-1))    
     l=p<3 and l//1 or l    
     for i=0,9 do
-      q=(s(i*3+l)+1.5+i/9)/z*19
+      q=(s(i*p+l)+1.5+i/9)/z*19
       w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
       x=s(w)*q+120
       y=s(w+8)*q+68
-      c=-2^-z*N[3]/2
+      c=2^-z*N[3]*(.5-p%2)
       n=3/z
       if p%4==2 then
         rect(x-n/2,
              y-n/2,
-             n,n,-c)
+             n,n,c)
       else
         (p%3==1 and circb or circ)
           (x,y,n,c)      
