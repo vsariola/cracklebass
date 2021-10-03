@@ -11,7 +11,6 @@ S={0,3,1,1, -- pattern speeds
 
 t=0
 N={}
-s=math.sin
 
 function TIC()
 --music:
@@ -21,16 +20,17 @@ function TIC()
 	e=t*2/2^S[k+1]
 	w=S[p+k*8+9]
 	n=S[w*8+33+e//16%8] 
-	N[k]=n*w>0 and -e%16 or 0
+	N[k]=-e%16%(n*w*16+1)
 	sfx(0,
 	    10 -- adjust pitch for song
 	     +k*12 -- each instr 1 oct. apart
 						+c -- chord change
 						+(n-1)*(9-n) -- minor chord
-						-k//3*e%16*8|0,
-					9*n*w, -- 0 pat & 0 note are silent
+						-k//3*e%16*8 -- kick pitch decay
+					 |0, -- force integer, tic stupid
+					9,
 					k, -- channel k
-					-e)-- decreasing envelope
+					N[k])-- decreasing envelope
 	end
 --visuals:
 
@@ -68,6 +68,7 @@ function TIC()
  --if btn(3) then t=t+100 end
 end
 
+s=math.sin
 -- <TILES>
 -- 001:eccccccccc888888caaaaaaaca888888cacccccccacc0ccccacc0ccccacc0ccc
 -- 002:ccccceee8888cceeaaaa0cee888a0ceeccca0ccc0cca0c0c0cca0c0c0cca0c0c
