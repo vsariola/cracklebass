@@ -36,7 +36,7 @@ function TIC()
  cls()
  mycirc=p<2 and circb or circ
   for z=5,.07,-.01 do
-    l=t/10+z*(p%4)
+    l=t/10+z*(p%4)^3
     circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,z/4-1+N[1]/4)    
     l=p<3 and l//1 or l    
     for i=0,9 do
