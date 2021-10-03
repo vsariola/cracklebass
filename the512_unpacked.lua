@@ -15,6 +15,7 @@ s=math.sin
 function TIC()
 --music:
  p=t//1024
+ c=p%6//4*S[5+t//128%4]
 	for k=0,3 do 	
 	e=t*2/2^S[k+1]
 	w=S[p+k*8+9]
@@ -23,7 +24,7 @@ function TIC()
 	sfx(0,
 	    10 -- adjust pitch for song
 	     +k*12 -- each instr 1 oct. apart
-						+p%6//4*S[5+t//128%4] -- chord change
+						+c -- chord change
 						+(n-1)*(9-n) -- minor chord
 						-k//3*e%16*8|0,
 					9*n*w, -- 0 pat & 0 note are silent
@@ -35,17 +36,17 @@ function TIC()
  cls()
  mycirc=p<2 and circb or circ
   for z=5,.07,-.01 do
-    circb(120+s(z+t/20)*9,68+s(z+t/17)*9,99/z,-z/6-N[1]/4)
+    l=t/10+z*(p%4)
+    circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,z/4-1+N[1]/4)    
+    l=p<3 and l//1 or l    
     for i=0,9 do
-      l=t/10+z*(p%4)
-      l=p<3 and l//1 or l
       q=(s(i*3+l)+1.5+i/9)/z*19
       w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
-      mycirc(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)
+      mycirc(s(w)*q+120,s(w+8)*q+68,3/z,-2^-z*N[3]/2)      
     end
   end
 
- q=p-1&7<6or print("the 512b",99,63,12)
+ q=p-1&7<6or print(t<512 and"brainlez Coders!"or p<8 and"cracklebass"or"pestis2021",99,63,12)
 
 	t=t+1
 
