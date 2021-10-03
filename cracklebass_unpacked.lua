@@ -36,10 +36,9 @@ function TIC()
 
  cls()
   for z=5,.07,-.01 do
-    l=t/10+z*(p%4)^3
+    l=t/(5+p)+z*(p%4)^3
     circb(120+s(l/4)*19/z,68+s(l/3)*19/z,99/z,z/4-1+N[1]/4)    
     l=p<3 and l//1 or l    
-				n=5/z    
     for i=0,9 do
       q=(s(i*3+l)+1.5+i/9)/z*19
       w=i*8 + s(i*4+l) + s(s(t/20)+t/30)     
