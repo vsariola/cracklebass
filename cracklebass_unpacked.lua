@@ -1,4 +1,4 @@
-S={0,3,1,1, -- pattern speeds
+S={-1,2,0,0, -- pattern speeds
    0,0,5,7, -- chords (i,i,iv,v)
    1,1,2,1,2,1,2,0, -- chn 0 bass 
    0,0,0,3,3,3,3,0, -- chn 1 mid
@@ -17,7 +17,7 @@ function TIC()
  p=t//1024
  c=p%6//4*S[5+t//128%4]
 	for k=0,3 do 	
-	e=t*2/2^S[k+1]
+	e=t/2^S[k+1]
 	w=S[p+k*8+9]
 	n=S[w*8+33+e//16%8] 
 	N[k]=-e%16%(n*w*16+1)
