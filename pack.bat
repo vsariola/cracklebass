@@ -1,1 +1,1 @@
-python pactic/pactic.py -c the512_unpacked.lua -o the512.tic
+python pactic/pactic.py -c cracklebass_unpacked.lua -o cracklebass.tic

@@ -64,8 +64,9 @@ function TIC()
 
  q=t<8306or exit()	
  
- if btn(2) then t=t-100 end	
- if btn(3) then t=t+100 end
+ --uncomment these for skipping time
+ --if btn(2) and t>100 then t=t-100 end	
+ --if btn(3) then t=t+100 end
 end
 
 -- <TILES>
