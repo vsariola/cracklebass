@@ -47,8 +47,7 @@ function TIC()
     end
   end
 
- q=(p-1)%7<6or print(t//512%2<1 and"brainlez Coders!"or"  cracklebass",80,63,12)
-
+ q=(p-1)%7<6or print(t//512%2<1 and"brainlez Coders!"or"  cracklebass",80,66,12)
 
 	t=t+1
 
