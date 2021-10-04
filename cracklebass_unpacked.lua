@@ -46,7 +46,7 @@ function TIC()
    (s(z+t/10)^8*6*N[0]/15-N[1]/z/5)
     *(.5-p%2)*(15-N[3])/8
   )
-  l=p<3 and l//1 or l
+  l=p<4 and l//1 or l
   for i=0,9 do
 	 prim[p%5%3+1](
     120+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)),
