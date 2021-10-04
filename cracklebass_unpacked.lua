@@ -37,7 +37,7 @@ function TIC()
 
  -- visuals:
  cls()
- for z=5,.07,-.01 do
+ for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
   prim[2+p%4//2](
    120+19/z*s(l/4),
