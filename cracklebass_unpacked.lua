@@ -61,10 +61,12 @@ function TIC()
  q=(p-1)%7<6 or
   print(
    t&512<1 and "brainlez Coders!" or "  cracklebass",
-   80,
-   70,
-   12
-  )
+   30,
+   64,
+   12,
+   1,
+   2
+  )  
 
  -- increase time, exit when done
  t=t+1
