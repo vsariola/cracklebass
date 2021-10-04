@@ -12,7 +12,7 @@ S={-1,2,0,0, -- pattern speeds
 t=0
 N={}
 
-prim={circ,circb,load'a,b,c,d=...rectb(a-c,b-c,c+c,c+c,d)'}
+prim={circ,circb,load'g,h,i,j=...rectb(g-i,h-i,i+i,i+i,j)'}
 
 function TIC()
 -- music:
