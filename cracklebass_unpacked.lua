@@ -7,12 +7,13 @@ S={-1,2,0,0, -- pattern speeds
     1,0,1,3,4,0,1,2, -- pat 1
     1,0,1,3,4,1,1,2, -- pat 2
     1,0,2,3,3,0,4,3, -- pat 3
-    1,0,1,0,1,0,1,1} -- pat 4 (kick)
+    1,0,1,0,1,0,1,1, -- pat 4 (kick)
+    9,9,9,0,1,1,1,1,1}
 
 t=0
 N={}
 
-prim={circ,circb,load'g,h,i,j=...rectb(g-i,h-i,i+i,i+i,j)'}
+prim={elli,ellib,load'g,h,i,j,k=...rectb(g-i,h-j,i+i,j+j,k)'}
 
 function TIC()
  -- music:
@@ -42,6 +43,7 @@ function TIC()
   prim[2+p%4//2](
    120+19/z*s(l/4),
    70+19/z*s(l/3),
+   99/z*S[p+73],
    99/z,
    (s(z+t/10)^8*6*N[0]/15-N[1]/z/5)
     *(.5-p%2)*(15-N[3])/8
@@ -51,6 +53,7 @@ function TIC()
 	 prim[p%5%3+1](
     120+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)),
     70+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)+8),
+    3/z,
     3/z,
     2^-z*N[3]*(.5-p%2)
    )
