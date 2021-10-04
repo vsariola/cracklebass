@@ -23,10 +23,10 @@ function TIC()
     N[k]=-e%16%(n*S[8*k+p+9]*16+1)
     sfx(
       0,
-      10 -- adjust pitch for song
+       1-- adjust pitch for song
        +k*12 -- each instr 1 oct. apart
        +p%6//4*S[5+t//128%4] -- chord change
-       +(n-1)*(9-n) -- minor chord
+       -n*n+10*n -- minor chord
        -k//3*e%16*8 -- kick pitch decay
        |0, -- force integer, tic stupid
       9,
