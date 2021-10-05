@@ -8,18 +8,24 @@ S={-1,2,0,0, -- pattern speeds
     1,0,1,3,4,1,1,2, -- pat 2
     1,0,2,3,3,0,4,3, -- pat 3
     1,0,1,0,1,0,1,1, -- pat 4
-    1,0,0,0,1,0,3,1, -- pat 5   
-    9,1,9,0,1,9,1,1,1}
+    1,0,0,0,1,0,3,1, -- pat 5
+    9,1,9,0,1,9,1,1,1} -- tunnel widths
 
 t=0
 N={}
 
-prim={elli,ellib,load'g,h,i,j,k=...rectb(g-i,h-j,i+i,j+j,k)'}
+-- we use 3 different primitives. rectb
+-- centered so behaves like elli/ellib
+prim={
+ elli,
+ ellib,
+ load'g,h,i,j,k=...rectb(g-i,h-j,i+i,j+j,k)'
+}
 
 function TIC()
  -- music:
- p=t//1024
- for k=0,3 do
+ p=t//1024 -- part
+ for k=0,3 do -- loop over channels
   e=t/2^S[k+1]
   n=S[8*S[8*k+p+9]+33+e//16%8]
   N[k]=-e%16%(n*S[8*k+p+9]*16+1)
@@ -41,6 +47,7 @@ function TIC()
  cls()
  for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
+  -- draw tunnel
   prim[2+p%6//3](
    120+19/z*s(l/4),
    70+19/z*s(l/3),
@@ -50,6 +57,7 @@ function TIC()
     *(.5-p%2)*(15-N[3])/8
   )
   l=p<4 and l//1 or l
+  -- draw 10 things in the tunnel
   for i=0,9 do
 	 prim[p%5%3+1](
     120+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)),
@@ -70,7 +78,7 @@ function TIC()
    12,
    1,
    2
-  )  
+  )
 
  -- increase time, exit when done
  t=t+1
