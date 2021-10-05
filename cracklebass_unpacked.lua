@@ -40,7 +40,7 @@ function TIC()
  cls()
  for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
-  prim[2+p%4//2](
+  prim[2+p%6//3](
    120+19/z*s(l/4),
    70+19/z*s(l/3),
    99/z*S[p+73],
