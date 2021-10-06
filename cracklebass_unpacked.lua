@@ -28,7 +28,7 @@ function TIC()
  for k=0,3 do -- loop over channels
   e=t/2^S[k+1]
   n=S[8*S[8*k+p+9]+33+e//16%8]
-  N[k]=-e%16%(n*S[8*k+p+9]*16+1)
+  N[k]=-e%16%(16*n*S[8*k+p+9]+1)
   sfx(
    0,
    1-- adjust pitch for song
@@ -66,25 +66,24 @@ function TIC()
     70+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)+8),
     3/z,
     3/z,
-    2^-z*N[3]*(.5-p%2)
+    2^-z*(.5-p%2)*N[3]
    )
   end
  end
 
- -- print credits
- q=(p-1)%7<6 or
-  print(
-   t&512<1 and "brainlez Coders!" or "  cracklebass",
-   30,
-   64,
-   12,
-   1,
-   2
-  )
 
  -- increase time, exit when done
- t=t+1
- q=t<8306 or exit()
+ t=t+1,
+	 	(p-1)%7<6 or
+		  print(
+		   t&512<1 and "brainlez Coders!" or "  cracklebass",
+		   30,
+		   64,
+		   12,
+		   1,
+		   2
+		  ),
+				t<8306 or exit()
 
 --uncomment these for skipping time
  --if btn(2) and t>100 then t=t-100 end
