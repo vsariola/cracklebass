@@ -45,6 +45,8 @@ function TIC()
 
  -- visuals:
  cls()
+ -- pride first: hide cursor
+	poke(16379,1)  
  for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
   -- draw tunnel
