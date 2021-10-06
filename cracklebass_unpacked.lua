@@ -46,7 +46,7 @@ function TIC()
  -- visuals:
  cls()
  -- pride first: hide cursor
-	poke(16379,1)  
+ poke(16379,1)
  for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
   -- draw tunnel
@@ -61,7 +61,7 @@ function TIC()
   l=p<4 and l//1 or l
   -- draw 10 things in the tunnel
   for i=0,9 do
-	 prim[p%5%3+1](
+   prim[p%5%3+1](
     120+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)),
     70+19/z*(s(i*p+l)+1.5+i/9)*s(i*8+s(i*4+l)+s(s(t/20)+t/30)+8),
     3/z,
@@ -74,16 +74,16 @@ function TIC()
 
  -- increase time, exit when done
  t=t+1,
-	 	(p-1)%7<6 or
-		  print(
-		   t&512<1 and "brainlez Coders!" or "  cracklebass",
-		   30,
-		   64,
-		   12,
-		   1,
-		   2
-		  ),
-				t<8306 or exit()
+   (p-1)%7<6 or
+    print(
+     t&512<1 and "brainlez Coders!" or "  cracklebass",
+     30,
+     64,
+     12,
+     1,
+     2
+   ),
+   t<8306 or exit()
 
 --uncomment these for skipping time
  --if btn(2) and t>100 then t=t-100 end
