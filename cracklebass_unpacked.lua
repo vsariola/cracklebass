@@ -1,15 +1,15 @@
-S={-1,2,0,0, -- pattern speeds
-    0,0,5,7, -- chords (i,i,iv,v)
-    1,1,2,1,2,1,2,0, -- chn 0 bass
-    0,0,0,3,3,3,5,0, -- chn 1 mid
-    0,2,1,2,1,2,1,2, -- chn 2 treble
-    0,4,4,0,4,4,4,4, -- chn 3 kick
-    1,0,1,3,4,0,1,2, -- pat 1
-    1,0,1,3,4,1,1,2, -- pat 2
-    1,0,2,3,3,0,4,3, -- pat 3
-    1,0,1,0,1,0,1,1, -- pat 4
-    1,0,0,0,1,0,3,1, -- pat 5
-    9,1,9,0,1,9,1,1,1} -- tunnel widths
+S={-1,2,0,0, --speed overlap chords i&i
+    5,7, --chords iv&v
+    1,1,2,1,2,1,2,0, --chn 0 bass
+    0,0,0,3,3,3,5,0, --chn 1 mid
+    0,2,1,2,1,2,1,2, --chn 2 treble
+    0,4,4,0,4,4,4,4, --chn 3 kick
+    1,0,1,3,4,0,1,2, --pat 1
+    1,0,1,3,4,1,1,2, --pat 2
+    1,0,2,3,3,0,4,3, --pat 3
+    1,0,1,0,1,0,1,1, --pat 4
+    1,0,0,0,1,0,3,1, --pat 5
+    9,1,9,0,1,9,1,1,1} --tunnel widths
 
 t=0
 N={}
@@ -28,18 +28,18 @@ function TIC()
  for k=0,3 do -- loop over channels
   e=t/2^S[k+1]
   -- get note from current pattern
-  n=S[8*S[8*k+p+9]+33+e//16%8]
+  n=S[8*S[8*k+p+7]+31+e//16%8]
   -- calculate volume for channel k
   -- and store it in array for syncs
   -- the %(16*n*S...) ensures that
   -- volume is 0 when pattern or note
   -- is 0
-  N[k]=-e%16%(16*n*S[8*k+p+9]+1)
+  N[k]=-e%16%(16*n*S[8*k+p+7]+1)
   sfx(
    0,
    1-- adjust pitch for song
     +k*12 -- each instr 1 oct. apart
-    +p%6//4*S[5+t//128%4] -- chord change
+    +p%6//4*S[3+t//128%4] -- chord change
     -n*n+10*n -- minor chord
     -k//3*e%16*8 -- kick pitch decay
     |0, -- force integer, tic stupid
@@ -59,7 +59,7 @@ function TIC()
   prim[2+p%6//3](
    120+19/z*s(l/4),
    70+19/z*s(l/3),
-   99/z*S[p+81],
+   99/z*S[p+79],
    99/z,
    (s(z+t/10)^8*N[0]*2-N[1]/z)
     *(.5-p%2)*(15-N[3])/40
@@ -67,8 +67,10 @@ function TIC()
   -- draw 10 things in the tunnel
   for i=0,9 do
    prim[p%5%3+1](
-    120+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)*s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)),
-    70+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)*s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)+8),
+    120+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)
+     *s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)),
+    70+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)
+     *s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)+8),
     3/z,
     3/z,
     2^-z*(.5-p%2)*N[3]
