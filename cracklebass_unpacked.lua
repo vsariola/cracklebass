@@ -76,8 +76,8 @@ function TIC()
  t=t+1,
    (p-1)%7<6 or
     print(
-     t&512<1 and "brainlez Coders!" or "  cracklebass",
-     30,
+     "brainlez Coders!        cracklebass",
+     28-(t//2&256),
      64,
      12,
      1,
