@@ -27,7 +27,13 @@ function TIC()
  p=t//1024 -- part
  for k=0,3 do -- loop over channels
   e=t/2^S[k+1]
+  -- get note from current pattern
   n=S[8*S[8*k+p+9]+33+e//16%8]
+  -- calculate volume for channel k
+  -- and store it in array for syncs
+  -- the %(16*n*S...) ensures that
+  -- volume is 0 when pattern or note
+  -- is 0
   N[k]=-e%16%(16*n*S[8*k+p+9]+1)
   sfx(
    0,
@@ -39,7 +45,7 @@ function TIC()
     |0, -- force integer, tic stupid
    9,
    k, -- channel k
-   N[k] -- envelope
+   N[k] -- envelope/volume
   )
  end
 
