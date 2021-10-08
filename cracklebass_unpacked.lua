@@ -83,8 +83,8 @@ function TIC()
 
  -- print credits
  print(
-  "brainlez Coders!        cracklebass",
-  28-t//512%14*256,
+  "code:pestis     brainlez Coders!     cracklebass",
+  52-(t//512+1)%15*220,
   64,
   12,
   1,
