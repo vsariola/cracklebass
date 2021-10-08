@@ -61,8 +61,8 @@ function TIC()
    70+19/z*s(l/3),
    99/z*S[p+81],
    99/z,
-   (s(z+t/10)^8*6*N[0]/15-N[1]/z/5)
-    *(.5-p%2)*(15-N[3])/8
+   (s(z+t/10)^8*N[0]*2-N[1]/z)
+    *(.5-p%2)*(15-N[3])/40
   )
   -- draw 10 things in the tunnel
   for i=0,9 do
