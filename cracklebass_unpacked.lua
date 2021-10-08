@@ -73,17 +73,17 @@ function TIC()
 
 
  -- increase time, exit when done
- t=t+1,
-   (p-1)%7<6 or
-    print(
-     "brainlez Coders!        cracklebass",
-     28-(t//2&256),
-     64,
-     12,
-     1,
-     2
-   ),
-   t<8306 or exit()
+ t=t+1,t<8306 or exit()
+
+ -- print credits
+ print(
+  "brainlez Coders!        cracklebass",
+  28-t//512%14*256,
+  64,
+  12,
+  1,
+  2
+ )
 
 --uncomment these for skipping time
  --if btn(2) and t>100 then t=t-100 end
