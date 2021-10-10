@@ -12,7 +12,6 @@ S={-1,2,0,0, --speed overlap chords i&i
     9,1,9,0,1,9,1,1,1} --tunnel widths
 
 t=0
-N={}
 
 -- we use 3 different primitives. rectb
 -- centered so behaves like elli/ellib
@@ -24,8 +23,8 @@ prim={
 
 function TIC()
  -- music:
- p=t//1024 -- part
  for k=0,3 do -- loop over channels
+  p=t//1024 -- part 
   e=t/2^S[k+1]
   -- get note from current pattern
   n=S[8*S[8*k+p+7]+31+e//16%8]
@@ -34,7 +33,7 @@ function TIC()
   -- the %(16*n*S...) ensures that
   -- volume is 0 when pattern or note
   -- is 0
-  N[k]=-e%16%(16*n*S[8*k+p+7]+1)
+  S[-k]=-e%16%(16*n*S[8*k+p+7]+1)
   sfx(
    0,
    1-- adjust pitch for song
@@ -45,7 +44,7 @@ function TIC()
     |0, -- force integer, tic stupid
    9,
    k, -- channel k
-   N[k] -- envelope/volume
+   S[-k] -- envelope/volume
   )
  end
 
@@ -61,19 +60,19 @@ function TIC()
    70+19/z*s(l/3),
    99/z*S[p+79],
    99/z,
-   (s(z+t/10)^8*N[0]*2-N[1]/z)
-    *(.5-p%2)*(15-N[3])/40
+   (s(z+t/10)^8*S[0]*2-S[-1]/z)
+    *(.5-p%2)*(15-S[-3])/40
   )
   -- draw 10 things in the tunnel
-  for i=0,9 do
+  for k=0,9 do
    prim[p%5%3+1](
-    120+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)
-     *s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)),
-    70+19/z*(s(i*p+p//4*l+(l-p//4*l)//1)+1.5+i/9)
-     *s(i*8+s(i*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)+8),
+    120+19/z*(s(k*p+p//4*l+(l-p//4*l)//1)+1.5+k/9)
+     *s(k*8+s(k*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)),
+    70+19/z*(s(k*p+p//4*l+(l-p//4*l)//1)+1.5+k/9)
+     *s(k*8+s(k*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)+8),
     3/z,
     3/z,
-    2^-z*(.5-p%2)*N[3]
+    2^-z*(.5-p%2)*S[-3]
    )
   end
  end
