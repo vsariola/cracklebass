@@ -9,17 +9,16 @@ S={-1,2,0,0, --speed overlap chords i&i
     1,0,2,3,3,0,4,3, --pat 3
     1,0,1,0,1,0,1,1, --pat 4
     1,0,0,0,1,0,3,1, --pat 5
-    9,1,9,0,1,9,1,1,1} --tunnel widths
+    9,1,9,0,1,9,1,1,1,--tunnel widths
+    elli,
+    ellib,
+    load'e,n,i,j,k=...rectb(e-i,n-j,i+i,j+j,k)'
+  }
 
 t=0
 
 -- we use 3 different primitives. rectb
 -- centered so behaves like elli/ellib
-prim={
- elli,
- ellib,
- load'e,n,i,j,k=...rectb(e-i,n-j,i+i,j+j,k)'
-}
 
 function TIC()
  -- music:
@@ -55,7 +54,7 @@ function TIC()
  for z=5,.07,-.02 do
   l=t/(5+p)+z*(p%4)^3
   -- draw tunnel
-  prim[2+p%6//3](
+  S[89+p%6//3](
    120+19/z*s(l/4),
    70+19/z*s(l/3),
    99/z*S[p+79],
@@ -65,7 +64,7 @@ function TIC()
   )
   -- draw 10 things in the tunnel
   for k=0,9 do
-   prim[p%5%3+1](
+   S[88+p%5%3](
     120+19/z*(s(k*p+p//4*l+(l-p//4*l)//1)+1.5+k/9)
      *s(k*8+s(k*4+p//4*l+(l-p//4*l)//1)+s(s(t/20)+t/30)),
     70+19/z*(s(k*p+p//4*l+(l-p//4*l)//1)+1.5+k/9)
