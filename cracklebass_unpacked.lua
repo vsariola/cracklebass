@@ -1,3 +1,11 @@
+-- TIC-80 sets a "hook" that gets
+-- called before every lua VM opcode.
+-- The hook checks if user wants to
+-- force exit. But it also makes
+-- TIC-80 ~ 10% or more slower. So,
+-- let's disable it.
+debug.sethook()
+
 S={-1,2,0,0, --speed overlap chords i&i
     5,7, --chords iv&v
     1,1,2,1,2,1,2,0, --chn 0 bass
