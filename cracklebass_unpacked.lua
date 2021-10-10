@@ -19,7 +19,7 @@ N={}
 prim={
  elli,
  ellib,
- load'g,h,i,j,k=...rectb(g-i,h-j,i+i,j+j,k)'
+ load'e,n,i,j,k=...rectb(e-i,n-j,i+i,j+j,k)'
 }
 
 function TIC()
