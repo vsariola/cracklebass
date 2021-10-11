@@ -18,15 +18,12 @@ S={-1,2,0,0, --speed overlap chords i&i
     1,0,1,0,1,0,1,1, --pat 4
     1,0,0,0,1,0,3,1, --pat 5
     9,1,9,0,1,9,1,1,1,--tunnel widths
-    elli,
-    ellib,
+    elli, -- 3 different primitives
+    ellib,-- rectb also centered
     load'e,n,i,j,k=...rectb(e-i,n-j,i+i,j+j,k)'
   }
 
 t=0
-
--- we use 3 different primitives. rectb
--- centered so behaves like elli/ellib
 
 function TIC()
  -- music:
