@@ -45,8 +45,8 @@ function TIC()
     +p%6//4*S[3+t//128%4] -- chord change
     -n*n+10*n -- minor chord
     -k//3*e%16*8 -- kick pitch decay
-    |0, -- force integer, tic stupid
-   9,
+    ~0, -- force integer, tic stupid
+   2,
    k, -- channel k
    S[-k] -- envelope/volume
   )
