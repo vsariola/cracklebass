@@ -37,3 +37,4 @@ Thumbs.db
 
 # Project-specific: packed tic files
 *.tic
+play.bat
